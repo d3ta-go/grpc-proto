@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option go_package = "pb-go/email";
+
+package email;
+
+import "email.proto";
+import "email_template.proto";
+
+service Email {
+    rpc SendEmail(email.SendEmailRequest) returns (email.SendEmailResponse);
+
+    rpc ETListAll(template.ETListAllRequest) returns (template.ETListAllResponse);
+}

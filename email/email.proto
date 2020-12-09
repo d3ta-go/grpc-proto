@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option go_package = "pb-go/email";
+
+package email.email; 
+
+message SendEmailRequest {}
+
+message SendEmailResponse {}
