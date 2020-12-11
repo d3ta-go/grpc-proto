@@ -25,16 +25,83 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
+// Message
+type MailAddress struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Email string `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Name  string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+}
+
+func (x *MailAddress) Reset() {
+	*x = MailAddress{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MailAddress) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MailAddress) ProtoMessage() {}
+
+func (x *MailAddress) ProtoReflect() protoreflect.Message {
+	mi := &file_email_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MailAddress.ProtoReflect.Descriptor instead.
+func (*MailAddress) Descriptor() ([]byte, []int) {
+	return file_email_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *MailAddress) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *MailAddress) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+// Request and Response
+// SendEmail
+// SendEmail Request
 type SendEmailRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
+
+	TemplateCode   string                     `protobuf:"bytes,1,opt,name=templateCode,proto3" json:"templateCode,omitempty"`
+	From           *MailAddress               `protobuf:"bytes,2,opt,name=from,proto3" json:"from,omitempty"`
+	To             *MailAddress               `protobuf:"bytes,3,opt,name=to,proto3" json:"to,omitempty"`
+	Cc             []*MailAddress             `protobuf:"bytes,4,rep,name=cc,proto3" json:"cc,omitempty"`
+	Bcc            []*MailAddress             `protobuf:"bytes,5,rep,name=bcc,proto3" json:"bcc,omitempty"`
+	ProcessingType string                     `protobuf:"bytes,6,opt,name=processingType,proto3" json:"processingType,omitempty"`
+	Template       *SendEmailRequest_Template `protobuf:"bytes,7,opt,name=template,proto3" json:"template,omitempty"`
 }
 
 func (x *SendEmailRequest) Reset() {
 	*x = SendEmailRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_email_proto_msgTypes[0]
+		mi := &file_email_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -47,7 +114,7 @@ func (x *SendEmailRequest) String() string {
 func (*SendEmailRequest) ProtoMessage() {}
 
 func (x *SendEmailRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_email_proto_msgTypes[0]
+	mi := &file_email_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,9 +127,59 @@ func (x *SendEmailRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendEmailRequest.ProtoReflect.Descriptor instead.
 func (*SendEmailRequest) Descriptor() ([]byte, []int) {
-	return file_email_proto_rawDescGZIP(), []int{0}
+	return file_email_proto_rawDescGZIP(), []int{1}
 }
 
+func (x *SendEmailRequest) GetTemplateCode() string {
+	if x != nil {
+		return x.TemplateCode
+	}
+	return ""
+}
+
+func (x *SendEmailRequest) GetFrom() *MailAddress {
+	if x != nil {
+		return x.From
+	}
+	return nil
+}
+
+func (x *SendEmailRequest) GetTo() *MailAddress {
+	if x != nil {
+		return x.To
+	}
+	return nil
+}
+
+func (x *SendEmailRequest) GetCc() []*MailAddress {
+	if x != nil {
+		return x.Cc
+	}
+	return nil
+}
+
+func (x *SendEmailRequest) GetBcc() []*MailAddress {
+	if x != nil {
+		return x.Bcc
+	}
+	return nil
+}
+
+func (x *SendEmailRequest) GetProcessingType() string {
+	if x != nil {
+		return x.ProcessingType
+	}
+	return ""
+}
+
+func (x *SendEmailRequest) GetTemplate() *SendEmailRequest_Template {
+	if x != nil {
+		return x.Template
+	}
+	return nil
+}
+
+// SendEmail Response
 type SendEmailResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -72,7 +189,7 @@ type SendEmailResponse struct {
 func (x *SendEmailResponse) Reset() {
 	*x = SendEmailResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_email_proto_msgTypes[1]
+		mi := &file_email_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -85,7 +202,7 @@ func (x *SendEmailResponse) String() string {
 func (*SendEmailResponse) ProtoMessage() {}
 
 func (x *SendEmailResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_email_proto_msgTypes[1]
+	mi := &file_email_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -98,18 +215,109 @@ func (x *SendEmailResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendEmailResponse.ProtoReflect.Descriptor instead.
 func (*SendEmailResponse) Descriptor() ([]byte, []int) {
-	return file_email_proto_rawDescGZIP(), []int{1}
+	return file_email_proto_rawDescGZIP(), []int{2}
+}
+
+type SendEmailRequest_Template struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	EmailTemplate          *EmailTemplate        `protobuf:"bytes,1,opt,name=emailTemplate,proto3" json:"emailTemplate,omitempty"`
+	DefaultTemplateVersion *EmailTemplateVersion `protobuf:"bytes,2,opt,name=defaultTemplateVersion,proto3" json:"defaultTemplateVersion,omitempty"`
+}
+
+func (x *SendEmailRequest_Template) Reset() {
+	*x = SendEmailRequest_Template{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SendEmailRequest_Template) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SendEmailRequest_Template) ProtoMessage() {}
+
+func (x *SendEmailRequest_Template) ProtoReflect() protoreflect.Message {
+	mi := &file_email_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SendEmailRequest_Template.ProtoReflect.Descriptor instead.
+func (*SendEmailRequest_Template) Descriptor() ([]byte, []int) {
+	return file_email_proto_rawDescGZIP(), []int{1, 0}
+}
+
+func (x *SendEmailRequest_Template) GetEmailTemplate() *EmailTemplate {
+	if x != nil {
+		return x.EmailTemplate
+	}
+	return nil
+}
+
+func (x *SendEmailRequest_Template) GetDefaultTemplateVersion() *EmailTemplateVersion {
+	if x != nil {
+		return x.DefaultTemplateVersion
+	}
+	return nil
 }
 
 var File_email_proto protoreflect.FileDescriptor
 
 var file_email_proto_rawDesc = []byte{
 	0x0a, 0x0b, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0b, 0x65,
-	0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x22, 0x12, 0x0a, 0x10, 0x53, 0x65,
-	0x6e, 0x64, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x13,
-	0x0a, 0x11, 0x53, 0x65, 0x6e, 0x64, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x42, 0x0d, 0x5a, 0x0b, 0x70, 0x62, 0x2d, 0x67, 0x6f, 0x2f, 0x65, 0x6d, 0x61,
-	0x69, 0x6c, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x1a, 0x14, 0x65, 0x6d, 0x61, 0x69,
+	0x6c, 0x5f, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x22, 0x37, 0x0a, 0x0b, 0x4d, 0x61, 0x69, 0x6c, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12,
+	0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
+	0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x80, 0x04, 0x0a, 0x10, 0x53, 0x65,
+	0x6e, 0x64, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x22,
+	0x0a, 0x0c, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x43, 0x6f,
+	0x64, 0x65, 0x12, 0x2c, 0x0a, 0x04, 0x66, 0x72, 0x6f, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x18, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x4d,
+	0x61, 0x69, 0x6c, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x52, 0x04, 0x66, 0x72, 0x6f, 0x6d,
+	0x12, 0x28, 0x0a, 0x02, 0x74, 0x6f, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x65,
+	0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x4d, 0x61, 0x69, 0x6c, 0x41,
+	0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x52, 0x02, 0x74, 0x6f, 0x12, 0x28, 0x0a, 0x02, 0x63, 0x63,
+	0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x65,
+	0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x4d, 0x61, 0x69, 0x6c, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
+	0x52, 0x02, 0x63, 0x63, 0x12, 0x2a, 0x0a, 0x03, 0x62, 0x63, 0x63, 0x18, 0x05, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x18, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e,
+	0x4d, 0x61, 0x69, 0x6c, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x52, 0x03, 0x62, 0x63, 0x63,
+	0x12, 0x26, 0x0a, 0x0e, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x69, 0x6e, 0x67, 0x54, 0x79,
+	0x70, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73,
+	0x73, 0x69, 0x6e, 0x67, 0x54, 0x79, 0x70, 0x65, 0x12, 0x42, 0x0a, 0x08, 0x74, 0x65, 0x6d, 0x70,
+	0x6c, 0x61, 0x74, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x26, 0x2e, 0x65, 0x6d, 0x61,
+	0x69, 0x6c, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x53, 0x65, 0x6e, 0x64, 0x45, 0x6d, 0x61,
+	0x69, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61,
+	0x74, 0x65, 0x52, 0x08, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x1a, 0xad, 0x01, 0x0a,
+	0x08, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x12, 0x43, 0x0a, 0x0d, 0x65, 0x6d, 0x61,
+	0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x1d, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74,
+	0x65, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x52,
+	0x0d, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x12, 0x5c,
+	0x0a, 0x16, 0x64, 0x65, 0x66, 0x61, 0x75, 0x6c, 0x74, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74,
+	0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x24,
+	0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x2e,
+	0x45, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x56, 0x65, 0x72,
+	0x73, 0x69, 0x6f, 0x6e, 0x52, 0x16, 0x64, 0x65, 0x66, 0x61, 0x75, 0x6c, 0x74, 0x54, 0x65, 0x6d,
+	0x70, 0x6c, 0x61, 0x74, 0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22, 0x13, 0x0a, 0x11,
+	0x53, 0x65, 0x6e, 0x64, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x42, 0x0d, 0x5a, 0x0b, 0x70, 0x62, 0x2d, 0x67, 0x6f, 0x2f, 0x65, 0x6d, 0x61, 0x69, 0x6c,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -124,17 +332,28 @@ func file_email_proto_rawDescGZIP() []byte {
 	return file_email_proto_rawDescData
 }
 
-var file_email_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_email_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_email_proto_goTypes = []interface{}{
-	(*SendEmailRequest)(nil),  // 0: email.email.SendEmailRequest
-	(*SendEmailResponse)(nil), // 1: email.email.SendEmailResponse
+	(*MailAddress)(nil),               // 0: email.email.MailAddress
+	(*SendEmailRequest)(nil),          // 1: email.email.SendEmailRequest
+	(*SendEmailResponse)(nil),         // 2: email.email.SendEmailResponse
+	(*SendEmailRequest_Template)(nil), // 3: email.email.SendEmailRequest.Template
+	(*EmailTemplate)(nil),             // 4: email.template.EmailTemplate
+	(*EmailTemplateVersion)(nil),      // 5: email.template.EmailTemplateVersion
 }
 var file_email_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: email.email.SendEmailRequest.from:type_name -> email.email.MailAddress
+	0, // 1: email.email.SendEmailRequest.to:type_name -> email.email.MailAddress
+	0, // 2: email.email.SendEmailRequest.cc:type_name -> email.email.MailAddress
+	0, // 3: email.email.SendEmailRequest.bcc:type_name -> email.email.MailAddress
+	3, // 4: email.email.SendEmailRequest.template:type_name -> email.email.SendEmailRequest.Template
+	4, // 5: email.email.SendEmailRequest.Template.emailTemplate:type_name -> email.template.EmailTemplate
+	5, // 6: email.email.SendEmailRequest.Template.defaultTemplateVersion:type_name -> email.template.EmailTemplateVersion
+	7, // [7:7] is the sub-list for method output_type
+	7, // [7:7] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_email_proto_init() }
@@ -142,9 +361,10 @@ func file_email_proto_init() {
 	if File_email_proto != nil {
 		return
 	}
+	file_email_template_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_email_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SendEmailRequest); i {
+			switch v := v.(*MailAddress); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -156,7 +376,31 @@ func file_email_proto_init() {
 			}
 		}
 		file_email_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SendEmailRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SendEmailResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SendEmailRequest_Template); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -174,7 +418,7 @@ func file_email_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_email_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

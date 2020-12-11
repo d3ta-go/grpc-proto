@@ -42,8 +42,8 @@ func NewEmailEndpoints() []*api.Endpoint {
 // Client API for Email service
 
 type EmailService interface {
+	// sendEmail send Email
 	SendEmail(ctx context.Context, in *SendEmailRequest, opts ...client.CallOption) (*SendEmailResponse, error)
-	ETListAll(ctx context.Context, in *ETListAllRequest, opts ...client.CallOption) (*ETListAllResponse, error)
 }
 
 type emailService struct {
@@ -59,18 +59,8 @@ func NewEmailService(name string, c client.Client) EmailService {
 }
 
 func (c *emailService) SendEmail(ctx context.Context, in *SendEmailRequest, opts ...client.CallOption) (*SendEmailResponse, error) {
-	req := c.c.NewRequest(c.name, "Email.SendEmail", in)
+	req := c.c.NewRequest(c.name, "Email.sendEmail", in)
 	out := new(SendEmailResponse)
-	err := c.c.Call(ctx, req, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *emailService) ETListAll(ctx context.Context, in *ETListAllRequest, opts ...client.CallOption) (*ETListAllResponse, error) {
-	req := c.c.NewRequest(c.name, "Email.ETListAll", in)
-	out := new(ETListAllResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -81,14 +71,13 @@ func (c *emailService) ETListAll(ctx context.Context, in *ETListAllRequest, opts
 // Server API for Email service
 
 type EmailHandler interface {
+	// sendEmail send Email
 	SendEmail(context.Context, *SendEmailRequest, *SendEmailResponse) error
-	ETListAll(context.Context, *ETListAllRequest, *ETListAllResponse) error
 }
 
 func RegisterEmailHandler(s server.Server, hdlr EmailHandler, opts ...server.HandlerOption) error {
 	type email interface {
 		SendEmail(ctx context.Context, in *SendEmailRequest, out *SendEmailResponse) error
-		ETListAll(ctx context.Context, in *ETListAllRequest, out *ETListAllResponse) error
 	}
 	type Email struct {
 		email
@@ -105,6 +94,160 @@ func (h *emailHandler) SendEmail(ctx context.Context, in *SendEmailRequest, out 
 	return h.EmailHandler.SendEmail(ctx, in, out)
 }
 
-func (h *emailHandler) ETListAll(ctx context.Context, in *ETListAllRequest, out *ETListAllResponse) error {
-	return h.EmailHandler.ETListAll(ctx, in, out)
+// Api Endpoints for EmailTemplate service
+
+func NewEmailTemplateEndpoints() []*api.Endpoint {
+	return []*api.Endpoint{}
+}
+
+// Client API for EmailTemplate service
+
+type EmailTemplateService interface {
+	// Email Template Methods:
+	// listALL list all Email template
+	ListAll(ctx context.Context, in *ETListAllRequest, opts ...client.CallOption) (*ETListAllResponse, error)
+	// findByCode find Email Template by Code
+	FindByCode(ctx context.Context, in *ETFindByCodeRequest, opts ...client.CallOption) (*ETFindByCodeResponse, error)
+	// Create create new email template
+	Create(ctx context.Context, in *ETCreateRequest, opts ...client.CallOption) (*ETCreateResponse, error)
+	// update update existing email template
+	Update(ctx context.Context, in *ETUpdateRequest, opts ...client.CallOption) (*ETUpdateResponse, error)
+	// setActive set existing email template status
+	SetActive(ctx context.Context, in *ETSetActiveRequest, opts ...client.CallOption) (*ETSetActiveResponse, error)
+	// delete delete existing email template
+	Delete(ctx context.Context, in *ETDeleteRequest, opts ...client.CallOption) (*ETDeleteResponse, error)
+}
+
+type emailTemplateService struct {
+	c    client.Client
+	name string
+}
+
+func NewEmailTemplateService(name string, c client.Client) EmailTemplateService {
+	return &emailTemplateService{
+		c:    c,
+		name: name,
+	}
+}
+
+func (c *emailTemplateService) ListAll(ctx context.Context, in *ETListAllRequest, opts ...client.CallOption) (*ETListAllResponse, error) {
+	req := c.c.NewRequest(c.name, "EmailTemplate.listAll", in)
+	out := new(ETListAllResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *emailTemplateService) FindByCode(ctx context.Context, in *ETFindByCodeRequest, opts ...client.CallOption) (*ETFindByCodeResponse, error) {
+	req := c.c.NewRequest(c.name, "EmailTemplate.findByCode", in)
+	out := new(ETFindByCodeResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *emailTemplateService) Create(ctx context.Context, in *ETCreateRequest, opts ...client.CallOption) (*ETCreateResponse, error) {
+	req := c.c.NewRequest(c.name, "EmailTemplate.create", in)
+	out := new(ETCreateResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *emailTemplateService) Update(ctx context.Context, in *ETUpdateRequest, opts ...client.CallOption) (*ETUpdateResponse, error) {
+	req := c.c.NewRequest(c.name, "EmailTemplate.update", in)
+	out := new(ETUpdateResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *emailTemplateService) SetActive(ctx context.Context, in *ETSetActiveRequest, opts ...client.CallOption) (*ETSetActiveResponse, error) {
+	req := c.c.NewRequest(c.name, "EmailTemplate.setActive", in)
+	out := new(ETSetActiveResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *emailTemplateService) Delete(ctx context.Context, in *ETDeleteRequest, opts ...client.CallOption) (*ETDeleteResponse, error) {
+	req := c.c.NewRequest(c.name, "EmailTemplate.delete", in)
+	out := new(ETDeleteResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// Server API for EmailTemplate service
+
+type EmailTemplateHandler interface {
+	// Email Template Methods:
+	// listALL list all Email template
+	ListAll(context.Context, *ETListAllRequest, *ETListAllResponse) error
+	// findByCode find Email Template by Code
+	FindByCode(context.Context, *ETFindByCodeRequest, *ETFindByCodeResponse) error
+	// Create create new email template
+	Create(context.Context, *ETCreateRequest, *ETCreateResponse) error
+	// update update existing email template
+	Update(context.Context, *ETUpdateRequest, *ETUpdateResponse) error
+	// setActive set existing email template status
+	SetActive(context.Context, *ETSetActiveRequest, *ETSetActiveResponse) error
+	// delete delete existing email template
+	Delete(context.Context, *ETDeleteRequest, *ETDeleteResponse) error
+}
+
+func RegisterEmailTemplateHandler(s server.Server, hdlr EmailTemplateHandler, opts ...server.HandlerOption) error {
+	type emailTemplate interface {
+		ListAll(ctx context.Context, in *ETListAllRequest, out *ETListAllResponse) error
+		FindByCode(ctx context.Context, in *ETFindByCodeRequest, out *ETFindByCodeResponse) error
+		Create(ctx context.Context, in *ETCreateRequest, out *ETCreateResponse) error
+		Update(ctx context.Context, in *ETUpdateRequest, out *ETUpdateResponse) error
+		SetActive(ctx context.Context, in *ETSetActiveRequest, out *ETSetActiveResponse) error
+		Delete(ctx context.Context, in *ETDeleteRequest, out *ETDeleteResponse) error
+	}
+	type EmailTemplate struct {
+		emailTemplate
+	}
+	h := &emailTemplateHandler{hdlr}
+	return s.Handle(s.NewHandler(&EmailTemplate{h}, opts...))
+}
+
+type emailTemplateHandler struct {
+	EmailTemplateHandler
+}
+
+func (h *emailTemplateHandler) ListAll(ctx context.Context, in *ETListAllRequest, out *ETListAllResponse) error {
+	return h.EmailTemplateHandler.ListAll(ctx, in, out)
+}
+
+func (h *emailTemplateHandler) FindByCode(ctx context.Context, in *ETFindByCodeRequest, out *ETFindByCodeResponse) error {
+	return h.EmailTemplateHandler.FindByCode(ctx, in, out)
+}
+
+func (h *emailTemplateHandler) Create(ctx context.Context, in *ETCreateRequest, out *ETCreateResponse) error {
+	return h.EmailTemplateHandler.Create(ctx, in, out)
+}
+
+func (h *emailTemplateHandler) Update(ctx context.Context, in *ETUpdateRequest, out *ETUpdateResponse) error {
+	return h.EmailTemplateHandler.Update(ctx, in, out)
+}
+
+func (h *emailTemplateHandler) SetActive(ctx context.Context, in *ETSetActiveRequest, out *ETSetActiveResponse) error {
+	return h.EmailTemplateHandler.SetActive(ctx, in, out)
+}
+
+func (h *emailTemplateHandler) Delete(ctx context.Context, in *ETDeleteRequest, out *ETDeleteResponse) error {
+	return h.EmailTemplateHandler.Delete(ctx, in, out)
 }

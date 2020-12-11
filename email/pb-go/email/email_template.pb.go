@@ -25,6 +25,194 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
+// Message
+// EmailTemplate
+type EmailTemplate struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id               uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Uuid             string `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Code             string `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	Name             string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	IsActive         bool   `protobuf:"varint,5,opt,name=isActive,proto3" json:"isActive,omitempty"`
+	EmailFormat      string `protobuf:"bytes,6,opt,name=emailFormat,proto3" json:"emailFormat,omitempty"`
+	DefaultVersionID uint64 `protobuf:"varint,7,opt,name=defaultVersionID,proto3" json:"defaultVersionID,omitempty"`
+}
+
+func (x *EmailTemplate) Reset() {
+	*x = EmailTemplate{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EmailTemplate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EmailTemplate) ProtoMessage() {}
+
+func (x *EmailTemplate) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EmailTemplate.ProtoReflect.Descriptor instead.
+func (*EmailTemplate) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *EmailTemplate) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *EmailTemplate) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
+func (x *EmailTemplate) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *EmailTemplate) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *EmailTemplate) GetIsActive() bool {
+	if x != nil {
+		return x.IsActive
+	}
+	return false
+}
+
+func (x *EmailTemplate) GetEmailFormat() string {
+	if x != nil {
+		return x.EmailFormat
+	}
+	return ""
+}
+
+func (x *EmailTemplate) GetDefaultVersionID() uint64 {
+	if x != nil {
+		return x.DefaultVersionID
+	}
+	return 0
+}
+
+// EmailTemplateVersion
+type EmailTemplateVersion struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id              uint64         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Version         string         `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
+	SubjectTpl      string         `protobuf:"bytes,3,opt,name=subjectTpl,proto3" json:"subjectTpl,omitempty"`
+	BodyTpl         string         `protobuf:"bytes,4,opt,name=bodyTpl,proto3" json:"bodyTpl,omitempty"`
+	EmailTemplateID uint64         `protobuf:"varint,5,opt,name=emailTemplateID,proto3" json:"emailTemplateID,omitempty"`
+	EmailTemplate   *EmailTemplate `protobuf:"bytes,6,opt,name=emailTemplate,proto3" json:"emailTemplate,omitempty"`
+}
+
+func (x *EmailTemplateVersion) Reset() {
+	*x = EmailTemplateVersion{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EmailTemplateVersion) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EmailTemplateVersion) ProtoMessage() {}
+
+func (x *EmailTemplateVersion) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EmailTemplateVersion.ProtoReflect.Descriptor instead.
+func (*EmailTemplateVersion) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *EmailTemplateVersion) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *EmailTemplateVersion) GetVersion() string {
+	if x != nil {
+		return x.Version
+	}
+	return ""
+}
+
+func (x *EmailTemplateVersion) GetSubjectTpl() string {
+	if x != nil {
+		return x.SubjectTpl
+	}
+	return ""
+}
+
+func (x *EmailTemplateVersion) GetBodyTpl() string {
+	if x != nil {
+		return x.BodyTpl
+	}
+	return ""
+}
+
+func (x *EmailTemplateVersion) GetEmailTemplateID() uint64 {
+	if x != nil {
+		return x.EmailTemplateID
+	}
+	return 0
+}
+
+func (x *EmailTemplateVersion) GetEmailTemplate() *EmailTemplate {
+	if x != nil {
+		return x.EmailTemplate
+	}
+	return nil
+}
+
+// Request & Response Message
+// ETListALL
+// ETListALL Request
 type ETListAllRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -34,7 +222,7 @@ type ETListAllRequest struct {
 func (x *ETListAllRequest) Reset() {
 	*x = ETListAllRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_email_template_proto_msgTypes[0]
+		mi := &file_email_template_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -47,7 +235,7 @@ func (x *ETListAllRequest) String() string {
 func (*ETListAllRequest) ProtoMessage() {}
 
 func (x *ETListAllRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_email_template_proto_msgTypes[0]
+	mi := &file_email_template_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,19 +248,23 @@ func (x *ETListAllRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ETListAllRequest.ProtoReflect.Descriptor instead.
 func (*ETListAllRequest) Descriptor() ([]byte, []int) {
-	return file_email_template_proto_rawDescGZIP(), []int{0}
+	return file_email_template_proto_rawDescGZIP(), []int{2}
 }
 
+// ETListAll Response
 type ETListAllResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
+
+	Count             int64            `protobuf:"varint,1,opt,name=count,proto3" json:"count,omitempty"`
+	EmailTemplateList []*EmailTemplate `protobuf:"bytes,2,rep,name=emailTemplateList,proto3" json:"emailTemplateList,omitempty"`
 }
 
 func (x *ETListAllResponse) Reset() {
 	*x = ETListAllResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_email_template_proto_msgTypes[1]
+		mi := &file_email_template_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -85,7 +277,7 @@ func (x *ETListAllResponse) String() string {
 func (*ETListAllResponse) ProtoMessage() {}
 
 func (x *ETListAllResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_email_template_proto_msgTypes[1]
+	mi := &file_email_template_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -98,7 +290,1028 @@ func (x *ETListAllResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ETListAllResponse.ProtoReflect.Descriptor instead.
 func (*ETListAllResponse) Descriptor() ([]byte, []int) {
-	return file_email_template_proto_rawDescGZIP(), []int{1}
+	return file_email_template_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ETListAllResponse) GetCount() int64 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+func (x *ETListAllResponse) GetEmailTemplateList() []*EmailTemplate {
+	if x != nil {
+		return x.EmailTemplateList
+	}
+	return nil
+}
+
+// ETFindByCode
+// ETFindByCode Request
+type ETFindByCodeRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+}
+
+func (x *ETFindByCodeRequest) Reset() {
+	*x = ETFindByCodeRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETFindByCodeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETFindByCodeRequest) ProtoMessage() {}
+
+func (x *ETFindByCodeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETFindByCodeRequest.ProtoReflect.Descriptor instead.
+func (*ETFindByCodeRequest) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ETFindByCodeRequest) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+// ETFindByCode Response
+type ETFindByCodeResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Query *ETFindByCodeRequest       `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
+	Data  *ETFindByCodeResponse_Data `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+}
+
+func (x *ETFindByCodeResponse) Reset() {
+	*x = ETFindByCodeResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETFindByCodeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETFindByCodeResponse) ProtoMessage() {}
+
+func (x *ETFindByCodeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETFindByCodeResponse.ProtoReflect.Descriptor instead.
+func (*ETFindByCodeResponse) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ETFindByCodeResponse) GetQuery() *ETFindByCodeRequest {
+	if x != nil {
+		return x.Query
+	}
+	return nil
+}
+
+func (x *ETFindByCodeResponse) GetData() *ETFindByCodeResponse_Data {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+// ETCreate
+// ETCreate Request
+type ETCreateRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Code            string           `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Name            string           `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	IsActive        bool             `protobuf:"varint,3,opt,name=isActive,proto3" json:"isActive,omitempty"`
+	EmailFormat     string           `protobuf:"bytes,4,opt,name=emailFormat,proto3" json:"emailFormat,omitempty"`
+	EtCreateVersion *ETCreateVersion `protobuf:"bytes,5,opt,name=etCreateVersion,proto3" json:"etCreateVersion,omitempty"`
+}
+
+func (x *ETCreateRequest) Reset() {
+	*x = ETCreateRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETCreateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETCreateRequest) ProtoMessage() {}
+
+func (x *ETCreateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETCreateRequest.ProtoReflect.Descriptor instead.
+func (*ETCreateRequest) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ETCreateRequest) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *ETCreateRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ETCreateRequest) GetIsActive() bool {
+	if x != nil {
+		return x.IsActive
+	}
+	return false
+}
+
+func (x *ETCreateRequest) GetEmailFormat() string {
+	if x != nil {
+		return x.EmailFormat
+	}
+	return ""
+}
+
+func (x *ETCreateRequest) GetEtCreateVersion() *ETCreateVersion {
+	if x != nil {
+		return x.EtCreateVersion
+	}
+	return nil
+}
+
+// ETCreateVersion
+type ETCreateVersion struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	SubjectTpl string `protobuf:"bytes,1,opt,name=subjectTpl,proto3" json:"subjectTpl,omitempty"`
+	BodyTpl    string `protobuf:"bytes,2,opt,name=bodyTpl,proto3" json:"bodyTpl,omitempty"`
+}
+
+func (x *ETCreateVersion) Reset() {
+	*x = ETCreateVersion{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETCreateVersion) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETCreateVersion) ProtoMessage() {}
+
+func (x *ETCreateVersion) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETCreateVersion.ProtoReflect.Descriptor instead.
+func (*ETCreateVersion) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ETCreateVersion) GetSubjectTpl() string {
+	if x != nil {
+		return x.SubjectTpl
+	}
+	return ""
+}
+
+func (x *ETCreateVersion) GetBodyTpl() string {
+	if x != nil {
+		return x.BodyTpl
+	}
+	return ""
+}
+
+// ETCreate Response
+type ETCreateResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Code    string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Version string `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
+}
+
+func (x *ETCreateResponse) Reset() {
+	*x = ETCreateResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETCreateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETCreateResponse) ProtoMessage() {}
+
+func (x *ETCreateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETCreateResponse.ProtoReflect.Descriptor instead.
+func (*ETCreateResponse) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ETCreateResponse) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *ETCreateResponse) GetVersion() string {
+	if x != nil {
+		return x.Version
+	}
+	return ""
+}
+
+// ETUpdate
+// ETUpdate Request
+type ETUpdateRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Keys *ETUpdateRequest_Keys `protobuf:"bytes,1,opt,name=keys,proto3" json:"keys,omitempty"`
+	Data *ETUpdateRequest_Data `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+}
+
+func (x *ETUpdateRequest) Reset() {
+	*x = ETUpdateRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETUpdateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETUpdateRequest) ProtoMessage() {}
+
+func (x *ETUpdateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETUpdateRequest.ProtoReflect.Descriptor instead.
+func (*ETUpdateRequest) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ETUpdateRequest) GetKeys() *ETUpdateRequest_Keys {
+	if x != nil {
+		return x.Keys
+	}
+	return nil
+}
+
+func (x *ETUpdateRequest) GetData() *ETUpdateRequest_Data {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+// ETUpdateVersion
+type ETUpdateVersion struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	SubjectTpl string `protobuf:"bytes,1,opt,name=subjectTpl,proto3" json:"subjectTpl,omitempty"`
+	BodyTpl    string `protobuf:"bytes,2,opt,name=bodyTpl,proto3" json:"bodyTpl,omitempty"`
+}
+
+func (x *ETUpdateVersion) Reset() {
+	*x = ETUpdateVersion{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETUpdateVersion) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETUpdateVersion) ProtoMessage() {}
+
+func (x *ETUpdateVersion) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETUpdateVersion.ProtoReflect.Descriptor instead.
+func (*ETUpdateVersion) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ETUpdateVersion) GetSubjectTpl() string {
+	if x != nil {
+		return x.SubjectTpl
+	}
+	return ""
+}
+
+func (x *ETUpdateVersion) GetBodyTpl() string {
+	if x != nil {
+		return x.BodyTpl
+	}
+	return ""
+}
+
+// ETUpdate Response
+type ETUpdateResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Code    string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Version string `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
+}
+
+func (x *ETUpdateResponse) Reset() {
+	*x = ETUpdateResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETUpdateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETUpdateResponse) ProtoMessage() {}
+
+func (x *ETUpdateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETUpdateResponse.ProtoReflect.Descriptor instead.
+func (*ETUpdateResponse) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ETUpdateResponse) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *ETUpdateResponse) GetVersion() string {
+	if x != nil {
+		return x.Version
+	}
+	return ""
+}
+
+// ETSetActive
+// ETSetActive Request
+type ETSetActiveRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Keys *ETSetActiveRequest_Keys `protobuf:"bytes,1,opt,name=keys,proto3" json:"keys,omitempty"`
+	Data *ETSetActiveRequest_Data `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+}
+
+func (x *ETSetActiveRequest) Reset() {
+	*x = ETSetActiveRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETSetActiveRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETSetActiveRequest) ProtoMessage() {}
+
+func (x *ETSetActiveRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETSetActiveRequest.ProtoReflect.Descriptor instead.
+func (*ETSetActiveRequest) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ETSetActiveRequest) GetKeys() *ETSetActiveRequest_Keys {
+	if x != nil {
+		return x.Keys
+	}
+	return nil
+}
+
+func (x *ETSetActiveRequest) GetData() *ETSetActiveRequest_Data {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+// ETSetActive Response
+type ETSetActiveResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Code    string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Version string `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
+}
+
+func (x *ETSetActiveResponse) Reset() {
+	*x = ETSetActiveResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETSetActiveResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETSetActiveResponse) ProtoMessage() {}
+
+func (x *ETSetActiveResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETSetActiveResponse.ProtoReflect.Descriptor instead.
+func (*ETSetActiveResponse) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *ETSetActiveResponse) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *ETSetActiveResponse) GetVersion() string {
+	if x != nil {
+		return x.Version
+	}
+	return ""
+}
+
+// ETDelete
+// ETDelete Request
+type ETDeleteRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+}
+
+func (x *ETDeleteRequest) Reset() {
+	*x = ETDeleteRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETDeleteRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETDeleteRequest) ProtoMessage() {}
+
+func (x *ETDeleteRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETDeleteRequest.ProtoReflect.Descriptor instead.
+func (*ETDeleteRequest) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ETDeleteRequest) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+// ETDelete Response
+type ETDeleteResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Query *ETDeleteRequest       `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
+	Data  *ETDeleteResponse_Data `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+}
+
+func (x *ETDeleteResponse) Reset() {
+	*x = ETDeleteResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETDeleteResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETDeleteResponse) ProtoMessage() {}
+
+func (x *ETDeleteResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETDeleteResponse.ProtoReflect.Descriptor instead.
+func (*ETDeleteResponse) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ETDeleteResponse) GetQuery() *ETDeleteRequest {
+	if x != nil {
+		return x.Query
+	}
+	return nil
+}
+
+func (x *ETDeleteResponse) GetData() *ETDeleteResponse_Data {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type ETFindByCodeResponse_Data struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	EmailTemplate          *EmailTemplate        `protobuf:"bytes,1,opt,name=emailTemplate,proto3" json:"emailTemplate,omitempty"`
+	DefaultTemplateVersion *EmailTemplateVersion `protobuf:"bytes,2,opt,name=defaultTemplateVersion,proto3" json:"defaultTemplateVersion,omitempty"`
+}
+
+func (x *ETFindByCodeResponse_Data) Reset() {
+	*x = ETFindByCodeResponse_Data{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETFindByCodeResponse_Data) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETFindByCodeResponse_Data) ProtoMessage() {}
+
+func (x *ETFindByCodeResponse_Data) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETFindByCodeResponse_Data.ProtoReflect.Descriptor instead.
+func (*ETFindByCodeResponse_Data) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{5, 0}
+}
+
+func (x *ETFindByCodeResponse_Data) GetEmailTemplate() *EmailTemplate {
+	if x != nil {
+		return x.EmailTemplate
+	}
+	return nil
+}
+
+func (x *ETFindByCodeResponse_Data) GetDefaultTemplateVersion() *EmailTemplateVersion {
+	if x != nil {
+		return x.DefaultTemplateVersion
+	}
+	return nil
+}
+
+type ETUpdateRequest_Keys struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+}
+
+func (x *ETUpdateRequest_Keys) Reset() {
+	*x = ETUpdateRequest_Keys{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETUpdateRequest_Keys) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETUpdateRequest_Keys) ProtoMessage() {}
+
+func (x *ETUpdateRequest_Keys) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETUpdateRequest_Keys.ProtoReflect.Descriptor instead.
+func (*ETUpdateRequest_Keys) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{9, 0}
+}
+
+func (x *ETUpdateRequest_Keys) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+type ETUpdateRequest_Data struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Code            string           `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Name            string           `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	IsActive        bool             `protobuf:"varint,3,opt,name=isActive,proto3" json:"isActive,omitempty"`
+	EmailFormat     string           `protobuf:"bytes,4,opt,name=emailFormat,proto3" json:"emailFormat,omitempty"`
+	EtUpdateVersion *ETUpdateVersion `protobuf:"bytes,5,opt,name=etUpdateVersion,proto3" json:"etUpdateVersion,omitempty"`
+}
+
+func (x *ETUpdateRequest_Data) Reset() {
+	*x = ETUpdateRequest_Data{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETUpdateRequest_Data) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETUpdateRequest_Data) ProtoMessage() {}
+
+func (x *ETUpdateRequest_Data) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETUpdateRequest_Data.ProtoReflect.Descriptor instead.
+func (*ETUpdateRequest_Data) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{9, 1}
+}
+
+func (x *ETUpdateRequest_Data) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *ETUpdateRequest_Data) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ETUpdateRequest_Data) GetIsActive() bool {
+	if x != nil {
+		return x.IsActive
+	}
+	return false
+}
+
+func (x *ETUpdateRequest_Data) GetEmailFormat() string {
+	if x != nil {
+		return x.EmailFormat
+	}
+	return ""
+}
+
+func (x *ETUpdateRequest_Data) GetEtUpdateVersion() *ETUpdateVersion {
+	if x != nil {
+		return x.EtUpdateVersion
+	}
+	return nil
+}
+
+type ETSetActiveRequest_Keys struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+}
+
+func (x *ETSetActiveRequest_Keys) Reset() {
+	*x = ETSetActiveRequest_Keys{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[19]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETSetActiveRequest_Keys) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETSetActiveRequest_Keys) ProtoMessage() {}
+
+func (x *ETSetActiveRequest_Keys) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[19]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETSetActiveRequest_Keys.ProtoReflect.Descriptor instead.
+func (*ETSetActiveRequest_Keys) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{12, 0}
+}
+
+func (x *ETSetActiveRequest_Keys) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+type ETSetActiveRequest_Data struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	IsActive bool `protobuf:"varint,1,opt,name=isActive,proto3" json:"isActive,omitempty"`
+}
+
+func (x *ETSetActiveRequest_Data) Reset() {
+	*x = ETSetActiveRequest_Data{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[20]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETSetActiveRequest_Data) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETSetActiveRequest_Data) ProtoMessage() {}
+
+func (x *ETSetActiveRequest_Data) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[20]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETSetActiveRequest_Data.ProtoReflect.Descriptor instead.
+func (*ETSetActiveRequest_Data) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{12, 1}
+}
+
+func (x *ETSetActiveRequest_Data) GetIsActive() bool {
+	if x != nil {
+		return x.IsActive
+	}
+	return false
+}
+
+type ETDeleteResponse_Data struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	VersionCount int64 `protobuf:"varint,1,opt,name=versionCount,proto3" json:"versionCount,omitempty"`
+}
+
+func (x *ETDeleteResponse_Data) Reset() {
+	*x = ETDeleteResponse_Data{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_email_template_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ETDeleteResponse_Data) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETDeleteResponse_Data) ProtoMessage() {}
+
+func (x *ETDeleteResponse_Data) ProtoReflect() protoreflect.Message {
+	mi := &file_email_template_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETDeleteResponse_Data.ProtoReflect.Descriptor instead.
+func (*ETDeleteResponse_Data) Descriptor() ([]byte, []int) {
+	return file_email_template_proto_rawDescGZIP(), []int{15, 0}
+}
+
+func (x *ETDeleteResponse_Data) GetVersionCount() int64 {
+	if x != nil {
+		return x.VersionCount
+	}
+	return 0
 }
 
 var File_email_template_proto protoreflect.FileDescriptor
@@ -106,11 +1319,150 @@ var File_email_template_proto protoreflect.FileDescriptor
 var file_email_template_proto_rawDesc = []byte{
 	0x0a, 0x14, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x5f, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65,
-	0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x22, 0x12, 0x0a, 0x10, 0x45, 0x54, 0x4c, 0x69, 0x73, 0x74,
-	0x41, 0x6c, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x13, 0x0a, 0x11, 0x45, 0x54,
-	0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42,
-	0x0d, 0x5a, 0x0b, 0x70, 0x62, 0x2d, 0x67, 0x6f, 0x2f, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x22, 0xc5, 0x01, 0x0a, 0x0d, 0x45, 0x6d, 0x61, 0x69, 0x6c,
+	0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x75, 0x75, 0x69, 0x64,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x75, 0x75, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04,
+	0x63, 0x6f, 0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65,
+	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
+	0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65,
+	0x18, 0x05, 0x20, 0x01, 0x28, 0x08, 0x52, 0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65,
+	0x12, 0x20, 0x0a, 0x0b, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x46, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x18,
+	0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x46, 0x6f, 0x72, 0x6d,
+	0x61, 0x74, 0x12, 0x2a, 0x0a, 0x10, 0x64, 0x65, 0x66, 0x61, 0x75, 0x6c, 0x74, 0x56, 0x65, 0x72,
+	0x73, 0x69, 0x6f, 0x6e, 0x49, 0x44, 0x18, 0x07, 0x20, 0x01, 0x28, 0x04, 0x52, 0x10, 0x64, 0x65,
+	0x66, 0x61, 0x75, 0x6c, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x49, 0x44, 0x22, 0xe9,
+	0x01, 0x0a, 0x14, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65,
+	0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x04, 0x52, 0x02, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69,
+	0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f,
+	0x6e, 0x12, 0x1e, 0x0a, 0x0a, 0x73, 0x75, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x54, 0x70, 0x6c, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x75, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x54, 0x70,
+	0x6c, 0x12, 0x18, 0x0a, 0x07, 0x62, 0x6f, 0x64, 0x79, 0x54, 0x70, 0x6c, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x07, 0x62, 0x6f, 0x64, 0x79, 0x54, 0x70, 0x6c, 0x12, 0x28, 0x0a, 0x0f, 0x65,
+	0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x49, 0x44, 0x18, 0x05,
+	0x20, 0x01, 0x28, 0x04, 0x52, 0x0f, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c,
+	0x61, 0x74, 0x65, 0x49, 0x44, 0x12, 0x43, 0x0a, 0x0d, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65,
+	0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x65,
+	0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x45, 0x6d,
+	0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x52, 0x0d, 0x65, 0x6d, 0x61,
+	0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x22, 0x12, 0x0a, 0x10, 0x45, 0x54,
+	0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x76,
+	0x0a, 0x11, 0x45, 0x54, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x4b, 0x0a, 0x11, 0x65, 0x6d, 0x61,
+	0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x18, 0x02,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d,
+	0x70, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c,
+	0x61, 0x74, 0x65, 0x52, 0x11, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61,
+	0x74, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x29, 0x0a, 0x13, 0x45, 0x54, 0x46, 0x69, 0x6e, 0x64,
+	0x42, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a,
+	0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x6f, 0x64,
+	0x65, 0x22, 0xbc, 0x02, 0x0a, 0x14, 0x45, 0x54, 0x46, 0x69, 0x6e, 0x64, 0x42, 0x79, 0x43, 0x6f,
+	0x64, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x39, 0x0a, 0x05, 0x71, 0x75,
+	0x65, 0x72, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x23, 0x2e, 0x65, 0x6d, 0x61, 0x69,
+	0x6c, 0x2e, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x45, 0x54, 0x46, 0x69, 0x6e,
+	0x64, 0x42, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x05,
+	0x71, 0x75, 0x65, 0x72, 0x79, 0x12, 0x3d, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d, 0x70,
+	0x6c, 0x61, 0x74, 0x65, 0x2e, 0x45, 0x54, 0x46, 0x69, 0x6e, 0x64, 0x42, 0x79, 0x43, 0x6f, 0x64,
+	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04,
+	0x64, 0x61, 0x74, 0x61, 0x1a, 0xa9, 0x01, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x12, 0x43, 0x0a,
+	0x0d, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d,
+	0x70, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c,
+	0x61, 0x74, 0x65, 0x52, 0x0d, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61,
+	0x74, 0x65, 0x12, 0x5c, 0x0a, 0x16, 0x64, 0x65, 0x66, 0x61, 0x75, 0x6c, 0x74, 0x54, 0x65, 0x6d,
+	0x70, 0x6c, 0x61, 0x74, 0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x24, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d, 0x70, 0x6c,
+	0x61, 0x74, 0x65, 0x2e, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74,
+	0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x16, 0x64, 0x65, 0x66, 0x61, 0x75, 0x6c,
+	0x74, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e,
+	0x22, 0xc2, 0x01, 0x0a, 0x0f, 0x45, 0x54, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1a, 0x0a, 0x08,
+	0x69, 0x73, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x08,
+	0x69, 0x73, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x65, 0x6d, 0x61, 0x69,
+	0x6c, 0x46, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x65,
+	0x6d, 0x61, 0x69, 0x6c, 0x46, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x12, 0x49, 0x0a, 0x0f, 0x65, 0x74,
+	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d, 0x70,
+	0x6c, 0x61, 0x74, 0x65, 0x2e, 0x45, 0x54, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x56, 0x65, 0x72,
+	0x73, 0x69, 0x6f, 0x6e, 0x52, 0x0f, 0x65, 0x74, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x56, 0x65,
+	0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22, 0x4b, 0x0a, 0x0f, 0x45, 0x54, 0x43, 0x72, 0x65, 0x61, 0x74,
+	0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x1e, 0x0a, 0x0a, 0x73, 0x75, 0x62, 0x6a,
+	0x65, 0x63, 0x74, 0x54, 0x70, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x75,
+	0x62, 0x6a, 0x65, 0x63, 0x74, 0x54, 0x70, 0x6c, 0x12, 0x18, 0x0a, 0x07, 0x62, 0x6f, 0x64, 0x79,
+	0x54, 0x70, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x62, 0x6f, 0x64, 0x79, 0x54,
+	0x70, 0x6c, 0x22, 0x40, 0x0a, 0x10, 0x45, 0x54, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x76, 0x65,
+	0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x76, 0x65, 0x72,
+	0x73, 0x69, 0x6f, 0x6e, 0x22, 0xdb, 0x02, 0x0a, 0x0f, 0x45, 0x54, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x38, 0x0a, 0x04, 0x6b, 0x65, 0x79, 0x73,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74,
+	0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x45, 0x54, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x4b, 0x65, 0x79, 0x73, 0x52, 0x04, 0x6b, 0x65,
+	0x79, 0x73, 0x12, 0x38, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x24, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74,
+	0x65, 0x2e, 0x45, 0x54, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x1a, 0x1a, 0x0a, 0x04,
+	0x4b, 0x65, 0x79, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x1a, 0xb7, 0x01, 0x0a, 0x04, 0x44, 0x61, 0x74,
+	0x61, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x04, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x73, 0x41,
+	0x63, 0x74, 0x69, 0x76, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x08, 0x69, 0x73, 0x41,
+	0x63, 0x74, 0x69, 0x76, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x46, 0x6f,
+	0x72, 0x6d, 0x61, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x65, 0x6d, 0x61, 0x69,
+	0x6c, 0x46, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x12, 0x49, 0x0a, 0x0f, 0x65, 0x74, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x1f, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74,
+	0x65, 0x2e, 0x45, 0x54, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f,
+	0x6e, 0x52, 0x0f, 0x65, 0x74, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x56, 0x65, 0x72, 0x73, 0x69,
+	0x6f, 0x6e, 0x22, 0x4b, 0x0a, 0x0f, 0x45, 0x54, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x56, 0x65,
+	0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x1e, 0x0a, 0x0a, 0x73, 0x75, 0x62, 0x6a, 0x65, 0x63, 0x74,
+	0x54, 0x70, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x75, 0x62, 0x6a, 0x65,
+	0x63, 0x74, 0x54, 0x70, 0x6c, 0x12, 0x18, 0x0a, 0x07, 0x62, 0x6f, 0x64, 0x79, 0x54, 0x70, 0x6c,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x62, 0x6f, 0x64, 0x79, 0x54, 0x70, 0x6c, 0x22,
+	0x40, 0x0a, 0x10, 0x45, 0x54, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69,
+	0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f,
+	0x6e, 0x22, 0xce, 0x01, 0x0a, 0x12, 0x45, 0x54, 0x53, 0x65, 0x74, 0x41, 0x63, 0x74, 0x69, 0x76,
+	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x3b, 0x0a, 0x04, 0x6b, 0x65, 0x79, 0x73,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74,
+	0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x45, 0x54, 0x53, 0x65, 0x74, 0x41, 0x63, 0x74,
+	0x69, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x4b, 0x65, 0x79, 0x73, 0x52,
+	0x04, 0x6b, 0x65, 0x79, 0x73, 0x12, 0x3b, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d, 0x70,
+	0x6c, 0x61, 0x74, 0x65, 0x2e, 0x45, 0x54, 0x53, 0x65, 0x74, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x64, 0x61,
+	0x74, 0x61, 0x1a, 0x1a, 0x0a, 0x04, 0x4b, 0x65, 0x79, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f,
+	0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x1a, 0x22,
+	0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x69,
+	0x76, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x69,
+	0x76, 0x65, 0x22, 0x43, 0x0a, 0x13, 0x45, 0x54, 0x53, 0x65, 0x74, 0x41, 0x63, 0x74, 0x69, 0x76,
+	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x18, 0x0a,
+	0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
+	0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22, 0x25, 0x0a, 0x0f, 0x45, 0x54, 0x44, 0x65, 0x6c,
+	0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f,
+	0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x22, 0xb0,
+	0x01, 0x0a, 0x10, 0x45, 0x54, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x35, 0x0a, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2e, 0x74, 0x65, 0x6d, 0x70, 0x6c,
+	0x61, 0x74, 0x65, 0x2e, 0x45, 0x54, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x52, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x12, 0x39, 0x0a, 0x04, 0x64, 0x61,
+	0x74, 0x61, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x25, 0x2e, 0x65, 0x6d, 0x61, 0x69, 0x6c,
+	0x2e, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x2e, 0x45, 0x54, 0x44, 0x65, 0x6c, 0x65,
+	0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x52,
+	0x04, 0x64, 0x61, 0x74, 0x61, 0x1a, 0x2a, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x12, 0x22, 0x0a,
+	0x0c, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x0c, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x75, 0x6e,
+	0x74, 0x42, 0x0d, 0x5a, 0x0b, 0x70, 0x62, 0x2d, 0x67, 0x6f, 0x2f, 0x65, 0x6d, 0x61, 0x69, 0x6c,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -125,17 +1477,51 @@ func file_email_template_proto_rawDescGZIP() []byte {
 	return file_email_template_proto_rawDescData
 }
 
-var file_email_template_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_email_template_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_email_template_proto_goTypes = []interface{}{
-	(*ETListAllRequest)(nil),  // 0: email.template.ETListAllRequest
-	(*ETListAllResponse)(nil), // 1: email.template.ETListAllResponse
+	(*EmailTemplate)(nil),             // 0: email.template.EmailTemplate
+	(*EmailTemplateVersion)(nil),      // 1: email.template.EmailTemplateVersion
+	(*ETListAllRequest)(nil),          // 2: email.template.ETListAllRequest
+	(*ETListAllResponse)(nil),         // 3: email.template.ETListAllResponse
+	(*ETFindByCodeRequest)(nil),       // 4: email.template.ETFindByCodeRequest
+	(*ETFindByCodeResponse)(nil),      // 5: email.template.ETFindByCodeResponse
+	(*ETCreateRequest)(nil),           // 6: email.template.ETCreateRequest
+	(*ETCreateVersion)(nil),           // 7: email.template.ETCreateVersion
+	(*ETCreateResponse)(nil),          // 8: email.template.ETCreateResponse
+	(*ETUpdateRequest)(nil),           // 9: email.template.ETUpdateRequest
+	(*ETUpdateVersion)(nil),           // 10: email.template.ETUpdateVersion
+	(*ETUpdateResponse)(nil),          // 11: email.template.ETUpdateResponse
+	(*ETSetActiveRequest)(nil),        // 12: email.template.ETSetActiveRequest
+	(*ETSetActiveResponse)(nil),       // 13: email.template.ETSetActiveResponse
+	(*ETDeleteRequest)(nil),           // 14: email.template.ETDeleteRequest
+	(*ETDeleteResponse)(nil),          // 15: email.template.ETDeleteResponse
+	(*ETFindByCodeResponse_Data)(nil), // 16: email.template.ETFindByCodeResponse.Data
+	(*ETUpdateRequest_Keys)(nil),      // 17: email.template.ETUpdateRequest.Keys
+	(*ETUpdateRequest_Data)(nil),      // 18: email.template.ETUpdateRequest.Data
+	(*ETSetActiveRequest_Keys)(nil),   // 19: email.template.ETSetActiveRequest.Keys
+	(*ETSetActiveRequest_Data)(nil),   // 20: email.template.ETSetActiveRequest.Data
+	(*ETDeleteResponse_Data)(nil),     // 21: email.template.ETDeleteResponse.Data
 }
 var file_email_template_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: email.template.EmailTemplateVersion.emailTemplate:type_name -> email.template.EmailTemplate
+	0,  // 1: email.template.ETListAllResponse.emailTemplateList:type_name -> email.template.EmailTemplate
+	4,  // 2: email.template.ETFindByCodeResponse.query:type_name -> email.template.ETFindByCodeRequest
+	16, // 3: email.template.ETFindByCodeResponse.data:type_name -> email.template.ETFindByCodeResponse.Data
+	7,  // 4: email.template.ETCreateRequest.etCreateVersion:type_name -> email.template.ETCreateVersion
+	17, // 5: email.template.ETUpdateRequest.keys:type_name -> email.template.ETUpdateRequest.Keys
+	18, // 6: email.template.ETUpdateRequest.data:type_name -> email.template.ETUpdateRequest.Data
+	19, // 7: email.template.ETSetActiveRequest.keys:type_name -> email.template.ETSetActiveRequest.Keys
+	20, // 8: email.template.ETSetActiveRequest.data:type_name -> email.template.ETSetActiveRequest.Data
+	14, // 9: email.template.ETDeleteResponse.query:type_name -> email.template.ETDeleteRequest
+	21, // 10: email.template.ETDeleteResponse.data:type_name -> email.template.ETDeleteResponse.Data
+	0,  // 11: email.template.ETFindByCodeResponse.Data.emailTemplate:type_name -> email.template.EmailTemplate
+	1,  // 12: email.template.ETFindByCodeResponse.Data.defaultTemplateVersion:type_name -> email.template.EmailTemplateVersion
+	10, // 13: email.template.ETUpdateRequest.Data.etUpdateVersion:type_name -> email.template.ETUpdateVersion
+	14, // [14:14] is the sub-list for method output_type
+	14, // [14:14] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_email_template_proto_init() }
@@ -145,7 +1531,7 @@ func file_email_template_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_email_template_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ETListAllRequest); i {
+			switch v := v.(*EmailTemplate); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -157,7 +1543,247 @@ func file_email_template_proto_init() {
 			}
 		}
 		file_email_template_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EmailTemplateVersion); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETListAllRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ETListAllResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETFindByCodeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETFindByCodeResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETCreateRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETCreateVersion); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETCreateResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETUpdateRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETUpdateVersion); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETUpdateResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETSetActiveRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETSetActiveResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETDeleteRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETDeleteResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETFindByCodeResponse_Data); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETUpdateRequest_Keys); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETUpdateRequest_Data); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETSetActiveRequest_Keys); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETSetActiveRequest_Data); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_email_template_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ETDeleteResponse_Data); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -175,7 +1801,7 @@ func file_email_template_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_email_template_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
