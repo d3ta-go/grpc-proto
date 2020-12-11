@@ -4,6 +4,136 @@ option go_package = "pb-go/email";
 
 package email.template;
 
+// Message
+// EmailTemplate
+message EmailTemplate {
+    uint64 id = 1;
+    string uuid = 2;
+    string code = 3;
+    string name = 4;
+    bool isActive = 5;
+    string emailFormat = 6;
+    uint64 defaultVersionID = 7;
+}
+
+// EmailTemplateVersion
+message EmailTemplateVersion {
+    uint64 id = 1;
+    string version = 2;
+    string subjectTpl = 3;
+    string bodyTpl = 4;
+    uint64 emailTemplateID = 5;
+    EmailTemplate emailTemplate = 6;
+}
+
+// Request & Response Message
+// ETListALL
+// ETListALL Request
 message ETListAllRequest {}
 
-message ETListAllResponse {}
+// ETListAll Response
+message ETListAllResponse {
+    int64 count = 1;
+    repeated EmailTemplate emailTemplateList = 2;
+}
+
+// ETFindByCode
+// ETFindByCode Request
+message ETFindByCodeRequest {
+    string code = 1;
+}
+
+// ETFindByCode Response
+message ETFindByCodeResponse {
+    ETFindByCodeRequest query = 1;
+    message Data {
+        EmailTemplate emailTemplate = 1;
+        EmailTemplateVersion defaultTemplateVersion = 2;
+    }
+    Data data = 2;
+}
+
+// ETCreate
+// ETCreate Request
+message ETCreateRequest {
+    string code = 1;
+    string name = 2;
+    bool isActive = 3;
+    string emailFormat = 4;
+    ETCreateVersion etCreateVersion = 5;
+}
+
+// ETCreateVersion
+message ETCreateVersion {
+    string subjectTpl = 1;
+    string bodyTpl = 2;
+}
+
+// ETCreate Response
+message ETCreateResponse {
+    string code = 1 ;
+    string version = 2;
+}
+
+// ETUpdate
+// ETUpdate Request
+message ETUpdateRequest {
+    message Keys {
+        string code = 1;
+    }
+    message Data {
+        string code = 1;
+        string name = 2;
+        bool isActive = 3;
+        string emailFormat = 4;
+        ETUpdateVersion etUpdateVersion = 5;
+    }
+    Keys keys = 1;
+    Data data = 2;
+}
+
+// ETUpdateVersion
+message ETUpdateVersion {
+    string subjectTpl = 1;
+    string bodyTpl = 2;
+}
+
+// ETUpdate Response
+message ETUpdateResponse {
+    string code = 1;
+    string version = 2;
+}
+
+// ETSetActive
+// ETSetActive Request
+message ETSetActiveRequest {
+    message Keys {
+        string code = 1;
+    }
+    message Data {
+        bool isActive = 1;
+    }
+    Keys keys = 1;
+    Data data = 2;
+}
+
+// ETSetActive Response
+message ETSetActiveResponse {
+    string code = 1;
+    string version = 2;
+}
+
+// ETDelete
+// ETDelete Request
+message ETDeleteRequest {
+    string code = 1;
+}
+
+// ETDelete Response
+message ETDeleteResponse {
+    ETDeleteRequest query = 1;
+    message Data {
+        int64 versionCount = 1;
+    }
+    Data data = 2;
+}

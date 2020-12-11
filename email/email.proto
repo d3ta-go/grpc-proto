@@ -2,8 +2,32 @@ syntax = "proto3";
 
 option go_package = "pb-go/email";
 
-package email.email; 
+package email.email;
 
-message SendEmailRequest {}
+import "email_template.proto";
 
+// Message
+message MailAddress {
+    string email = 1;
+    string name = 2;
+}
+
+// Request and Response
+// SendEmail
+// SendEmail Request
+message SendEmailRequest {
+    string templateCode = 1;
+    MailAddress from = 2;
+    MailAddress to = 3;
+    repeated MailAddress cc = 4;
+    repeated MailAddress bcc = 5;
+    string processingType = 6;
+    message Template {
+        template.EmailTemplate emailTemplate = 1;
+        template.EmailTemplateVersion defaultTemplateVersion = 2;
+    }
+    Template template = 7;
+}
+
+// SendEmail Response
 message SendEmailResponse {}

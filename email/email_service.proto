@@ -7,8 +7,25 @@ package email;
 import "email.proto";
 import "email_template.proto";
 
+// Email service
 service Email {
-    rpc SendEmail(email.SendEmailRequest) returns (email.SendEmailResponse);
+    // sendEmail send Email
+    rpc sendEmail(email.SendEmailRequest) returns (email.SendEmailResponse);
+}
 
-    rpc ETListAll(template.ETListAllRequest) returns (template.ETListAllResponse);
+// EmailTemplate service
+service EmailTemplate {
+    // Email Template Methods:
+    // listALL list all Email template
+    rpc listAll(template.ETListAllRequest) returns (template.ETListAllResponse);
+    // findByCode find Email Template by Code
+    rpc findByCode(template.ETFindByCodeRequest) returns (template.ETFindByCodeResponse);
+    // Create create new email template
+    rpc create(template.ETCreateRequest) returns (template.ETCreateResponse);
+    // update update existing email template
+    rpc update(template.ETUpdateRequest) returns (template.ETUpdateResponse);
+    // setActive set existing email template status
+    rpc setActive(template.ETSetActiveRequest) returns (template.ETSetActiveResponse);
+    // delete delete existing email template
+    rpc delete(template.ETDeleteRequest) returns (template.ETDeleteResponse);
 }
