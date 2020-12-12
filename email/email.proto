@@ -21,7 +21,11 @@ message SendEmailRequest {
     MailAddress to = 3;
     repeated MailAddress cc = 4;
     repeated MailAddress bcc = 5;
-    string processingType = 6;
+    enum ProcessingType {
+        SYNC = 0;
+        ASYNC = 1;
+    }
+    ProcessingType processingType = 6;
     message Template {
         template.EmailTemplate emailTemplate = 1;
         template.EmailTemplateVersion defaultTemplateVersion = 2;
@@ -30,4 +34,7 @@ message SendEmailRequest {
 }
 
 // SendEmail Response
-message SendEmailResponse {}
+message SendEmailResponse {
+    string templateCode = 1;
+    string status = 2;
+}

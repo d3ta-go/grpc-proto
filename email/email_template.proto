@@ -4,7 +4,13 @@ option go_package = "pb-go/email";
 
 package email.template;
 
-// Message
+// Message & Type
+// EmailFormat
+enum EmailFormat {
+    HTML = 0;
+    TEXT = 1;
+}
+
 // EmailTemplate
 message EmailTemplate {
     uint64 id = 1;
@@ -59,7 +65,7 @@ message ETCreateRequest {
     string code = 1;
     string name = 2;
     bool isActive = 3;
-    string emailFormat = 4;
+    EmailFormat emailFormat = 4;
     ETCreateVersion etCreateVersion = 5;
 }
 
@@ -85,7 +91,7 @@ message ETUpdateRequest {
         string code = 1;
         string name = 2;
         bool isActive = 3;
-        string emailFormat = 4;
+        EmailFormat emailFormat = 4;
         ETUpdateVersion etUpdateVersion = 5;
     }
     Keys keys = 1;
